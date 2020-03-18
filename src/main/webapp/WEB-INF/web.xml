@@ -13,4 +13,12 @@
   	<servlet-name>ERSServlet</servlet-name>
   	<url-pattern>/ers</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.revature.view.servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<url-pattern>/register</url-pattern>
+  </servlet-mapping>
 </web-app>
