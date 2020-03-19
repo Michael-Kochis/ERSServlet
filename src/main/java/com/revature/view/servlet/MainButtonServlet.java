@@ -25,16 +25,19 @@ public class MainButtonServlet extends HttpServlet {
 	  protected void doPost(HttpServletRequest req, HttpServletResponse res)
 	    throws IOException, ServletException {
 		  String action = req.getParameter("action");
+		  
+		  PrintWriter out = res.getWriter();
 
 		  switch (action) {
 		  case "login": System.out.println("Login keypress detected.");
 		                break;
 		  case "register":  System.out.println("Register keypress detected.");
+		  					out.println(CommonForms.registrationForm());
+		  					res.sendRedirect("/ERSServlet/register");
 			  				break;
 		  default: System.out.println("Invalid event source.");
 		  			log.warn("Impossible keypress detected in MainButtonServlet");
 		  }
-	      PrintWriter out = res.getWriter();
 	      out.println(CommonForms.landingPage());
 	  }
 }

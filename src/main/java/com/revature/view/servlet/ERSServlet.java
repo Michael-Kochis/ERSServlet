@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.revature.controller.Driver;
-
 public class ERSServlet extends HttpServlet{
 	private static Logger log = Logger.getLogger(ERSServlet.class);
 	private static final long serialVersionUID = -4973076404122935147L;

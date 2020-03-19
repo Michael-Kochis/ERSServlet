@@ -2,8 +2,20 @@ package com.revature.view.servlet;
 
 public class CommonForms {
 	public static String registrationForm() {
-		String returnThis = null;
-		return returnThis;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<title>Welcome to Emerald ERS</title>");
+		sb.append("<form action=\"/ERSServlet/register\" method=\"POST\">");
+		sb.append("<label>Username</label>");
+		sb.append("<input type=\"textarea\" name=\"username\" /><br>");
+		sb.append("\n\r<label>Password</label>");
+		sb.append("<input type=\"password\" name=\"password\" /><br>");
+		sb.append("\n\r<label>Confirm Password</label>");
+		sb.append("<input type=\"password\" name=\"confirm\" /><br>");
+		sb.append("\n\r<button type=\"submit\" value=\"register\" name=\"action\" />Register</button>");
+		sb.append("</form>\r\n");
+		
+		return sb.toString();
 	}
 	
 	public static String landingPage() {
