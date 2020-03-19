@@ -14,6 +14,14 @@
   	<url-pattern>/ers</url-pattern>
   </servlet-mapping>
   <servlet>
+  	<servlet-name>MainButtonServlet</servlet-name>
+    <servlet-class>com.revature.view.servlet.MainButtonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MainButtonServlet</servlet-name>
+  	<url-pattern>/mainButton</url-pattern>
+  </servlet-mapping>
+  <servlet>
   	<servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.revature.view.servlet.RegisterServlet</servlet-class>
   </servlet>

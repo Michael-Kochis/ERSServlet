@@ -24,7 +24,7 @@ public class ERSServlet extends HttpServlet{
 	      PrintWriter out = res.getWriter();
 
 	      out.println("<h1>Hello World!</h1>");
-	      out.println(CommonForms.userNameForm());
+	      out.println(CommonForms.landingPage() );
 	 }
 
 	  @Override
