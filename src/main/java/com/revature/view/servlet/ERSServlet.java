@@ -2,6 +2,7 @@ package com.revature.view.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,9 @@ public class ERSServlet extends HttpServlet{
 	public static void nameMe(HttpServletRequest req, HttpServletResponse res, String name) {
 		try {
 			PrintWriter out = res.getWriter();
+			LocalDateTime timeNow = LocalDateTime.now();
 		    out.println("<h1>Hello, " + name + "!</h1>");
+			out.println("Time is " + timeNow.toString());
 		    out.println(CommonForms.userNameForm());
 		} catch (IOException e) {
 			log.warn("IOException in nameMe function of ERSServlet.", e);
