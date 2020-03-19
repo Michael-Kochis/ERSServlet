@@ -63,7 +63,7 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 			
 			while (rs.next()) {
 				temp = new ERSUser();
-		    	temp.setERSUserID(rs.getLong("ERS_USER_ID"));
+		    	temp.setERSUserID(rs.getLong("ERS_USERS_ID"));
 		    	temp.setERSUserName(rs.getString("ERS_USERNAME") );
 		    	temp.setERSPassword(new PHash(rs.getString("ERS_PASSWORD")) );
 		    	temp.setFirstName(rs.getString("USER_FIRST_NAME"));
@@ -118,7 +118,7 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		     
 		     if (rs.next()) {
 		    	 returnThis = new ERSUser();
-		    	 returnThis.setERSUserID(rs.getLong("ERS_USER_ID"));
+		    	 returnThis.setERSUserID(rs.getLong("ERS_USERS_ID"));
 		    	 returnThis.setERSUserName(rs.getString("ERS_USERNAME") );
 		    	 returnThis.setERSPassword(new PHash(rs.getString("ERS_PASSWORD")) );
 		    	 returnThis.setFirstName(rs.getString("USER_FIRST_NAME"));
@@ -126,7 +126,7 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		    	 returnThis.setEmail(rs.getString("USER_EMAIL"));
 		    	 returnThis.setUserRoleID(ERSUserRole.longToType(rs.getLong("USER_ROLE_ID")) );
 		     }
-		     log.trace("Single record successfully deleted from ERS_Users table.");
+		     log.trace("Single record successfully read from ERS_Users table.");
 		} catch (SQLException e) {
 			log.warn("Error while reading record from ERS_Users table.", e);
 		}
@@ -150,6 +150,12 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		} catch (SQLException e) {
 			log.warn("Error while updating ERS_USERS.", e);
 		}
+	}
+
+	public boolean login(String username, String password) {
+		ERSUser test = readUserByUsername(username);
+		if (test == null) return false;
+		return test.getERSPassword().checkPassword(password);
 	}
 
 }

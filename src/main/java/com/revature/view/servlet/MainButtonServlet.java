@@ -30,9 +30,9 @@ public class MainButtonServlet extends HttpServlet {
 
 		  switch (action) {
 		  case "login": System.out.println("Login keypress detected.");
+						res.sendRedirect("/ERSServlet/login");
 		                break;
 		  case "register":  System.out.println("Register keypress detected.");
-		  					out.println(CommonForms.registrationForm());
 		  					res.sendRedirect("/ERSServlet/register");
 			  				break;
 		  default: System.out.println("Invalid event source.");

@@ -29,4 +29,8 @@ public class ERSUserService {
 		ud.updateERSUser(user);
 	}
 
+	public static boolean login(String username, String password) {
+		return ud.login(username, password);
+	}
+
 }
