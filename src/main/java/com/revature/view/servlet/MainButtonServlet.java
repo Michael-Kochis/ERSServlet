@@ -29,11 +29,9 @@ public class MainButtonServlet extends HttpServlet {
 		  PrintWriter out = res.getWriter();
 
 		  switch (action) {
-		  case "login": System.out.println("Login keypress detected.");
-						res.sendRedirect("/ERSServlet/login");
+		  case "login": res.sendRedirect("/ERSServlet/login");
 		                break;
-		  case "register":  System.out.println("Register keypress detected.");
-		  					res.sendRedirect("/ERSServlet/register");
+		  case "register":  res.sendRedirect("/ERSServlet/register");
 			  				break;
 		  default: System.out.println("Invalid event source.");
 		  			log.warn("Impossible keypress detected in MainButtonServlet");

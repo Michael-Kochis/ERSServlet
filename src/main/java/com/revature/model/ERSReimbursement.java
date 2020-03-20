@@ -1,6 +1,6 @@
 package com.revature.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.revature.enums.ERSReimbursementStatus;
 import com.revature.enums.ERSReimbursementType;
@@ -8,8 +8,8 @@ import com.revature.enums.ERSReimbursementType;
 public class ERSReimbursement {
 	private long reimbID;
 	private double reimbAmount;
-	private Date reimbSubmitted;
-	private Date reimbResolved;
+	private LocalDateTime reimbSubmitted;
+	private LocalDateTime reimbResolved;
 	private String reimbDescription;
 	private long reimbAuthor;
 	private long reimbResolver;
@@ -20,7 +20,7 @@ public class ERSReimbursement {
 		super();
 	}
 
-	public ERSReimbursement(long reimbID, double reimbAmount, Date reimbSubmitted, Date reimbResolved,
+	public ERSReimbursement(long reimbID, double reimbAmount, LocalDateTime reimbSubmitted, LocalDateTime reimbResolved,
 			String reimbDescription, long reimbAuthor, long reimbResolver, ERSReimbursementStatus reimbStatus,
 			ERSReimbursementType reimbType) {
 		super();
@@ -51,19 +51,19 @@ public class ERSReimbursement {
 		this.reimbAmount = reimbAmount;
 	}
 
-	public Date getReimbSubmitted() {
+	public LocalDateTime getReimbSubmitted() {
 		return reimbSubmitted;
 	}
 
-	public void setReimbSubmitted(Date reimbSubmitted) {
+	public void setReimbSubmitted(LocalDateTime reimbSubmitted) {
 		this.reimbSubmitted = reimbSubmitted;
 	}
 
-	public Date getReimbResolved() {
+	public LocalDateTime getReimbResolved() {
 		return reimbResolved;
 	}
 
-	public void setReimbResolved(Date reimbResolved) {
+	public void setReimbResolved(LocalDateTime reimbResolved) {
 		this.reimbResolved = reimbResolved;
 	}
 

@@ -51,6 +51,33 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		}
 	}
 
+	public long getNextID() {
+		long returnThis = 0L;
+		
+		try {
+	     Connection testConn = JDBCConnector.getConn();
+	     PreparedStatement st = testConn.prepareStatement("SELECT MAX(ERS_USERS_ID) FROM ERS_USERS");
+	     ResultSet rs = st.executeQuery();
+	     
+	     if (rs.next()) {
+	    	 returnThis = rs.getLong(1);
+	    	 returnThis++;
+	     } else {
+	    	 log.warn("Data returned, but incorrect format.");
+	     }
+			
+		} catch (SQLException e) {
+			log.warn("Error while reading max value from ERS_Users table.", e);
+		}
+		return returnThis;
+	}
+
+	public boolean login(String username, String password) {
+		ERSUser test = readUserByUsername(username);
+		if (test == null) return false;
+		return test.getERSPassword().checkPassword(password);
+	}
+
 	public TreeSet<ERSUser> readAllUser() {
 		TreeSet<ERSUser> returnThis = new TreeSet<ERSUser>();
 		ERSUser temp = null;
@@ -150,12 +177,6 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		} catch (SQLException e) {
 			log.warn("Error while updating ERS_USERS.", e);
 		}
-	}
-
-	public boolean login(String username, String password) {
-		ERSUser test = readUserByUsername(username);
-		if (test == null) return false;
-		return test.getERSPassword().checkPassword(password);
 	}
 
 }

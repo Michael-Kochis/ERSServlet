@@ -33,4 +33,8 @@ public class ERSUserService {
 		return ud.login(username, password);
 	}
 
+	public static long getNextID() {
+		return ud.getNextID();
+	}
+
 }
