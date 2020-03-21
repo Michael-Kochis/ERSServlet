@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.interfaces.ERSReimbursementDAOInterface;
 import com.revature.enums.ERSReimbursementStatus;
@@ -16,7 +17,7 @@ import com.revature.model.ERSReimbursement;
 import oracle.sql.DATE;
 
 public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
-	private static Logger log = Logger.getLogger(ERSReimbursementDAO.class);
+	private static Logger log = LogManager.getLogger(ERSReimbursementDAO.class);
 
 	public void createReimbursement(ERSReimbursement reimb) {
 		try {

@@ -8,11 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ERSServlet extends HttpServlet{
-	private static Logger log = Logger.getLogger(ERSServlet.class);
+	private static Logger log = LogManager.getLogger(ERSServlet.class);
 	private static final long serialVersionUID = -4973076404122935147L;
 
 	  @Override
@@ -31,10 +33,15 @@ public class ERSServlet extends HttpServlet{
 	    throws IOException, ServletException {
 	 }
 
-	public static void nameMe(HttpServletRequest req, HttpServletResponse res, String name) {
+	public static void nameMe(HttpServletRequest req, HttpServletResponse res) {
 		try {
 			PrintWriter out = res.getWriter();
 			LocalDateTime timeNow = LocalDateTime.now();
+			HttpSession session = req.getSession();
+			String name = (String) session.getAttribute("username");
+			
+			if (name == null) 
+				name = "World";
 		    out.println("<h1>Hello, " + name + "!</h1>");
 			out.println("Time is " + timeNow.toString());
 		    out.println(CommonForms.userNameForm());

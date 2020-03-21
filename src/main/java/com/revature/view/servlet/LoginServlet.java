@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.service.ERSUserService;
 
@@ -26,7 +27,11 @@ public class LoginServlet extends HttpServlet {
 		  String pass = req.getParameter("password");
 		  if (ERSUserService.login(name, pass)) {
 			  System.out.println(name);
-			  ERSServlet.nameMe(req, res, name);
+			  
+			  HttpSession session = req.getSession();
+			  session.setAttribute("username", name);
+			  
+			  ERSServlet.nameMe(req, res);
 		  } else {
 			  PrintWriter out = res.getWriter();
 			  out.println("<h4>User name and password did not match.</h4>");

@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class MainButtonServlet extends HttpServlet {
 	private static final long serialVersionUID = -3514439693500003690L;
-	private static Logger log = Logger.getLogger(MainButtonServlet.class);
+	private static Logger log = LogManager.getLogger(MainButtonServlet.class);
 
 	  @Override
 	  protected void doGet(HttpServletRequest req, HttpServletResponse res)

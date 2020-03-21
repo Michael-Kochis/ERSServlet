@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.TreeSet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.interfaces.ERSUserDAOInterface;
 import com.revature.enums.ERSUserRole;
@@ -14,7 +15,7 @@ import com.revature.model.ERSUser;
 import com.revature.model.PHash;
 
 public class ERSUserDAO implements ERSUserDAOInterface {
-	private static Logger log = Logger.getLogger(ERSUserDAO.class);
+	private static Logger log = LogManager.getLogger(ERSUserDAO.class);
 
 	public void createERSUser(ERSUser user) {
 	     try {

@@ -1,12 +1,13 @@
 package com.revature.service;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.ERSUserDAO;
 import com.revature.model.ERSUser;
 
 public class ERSUserService {
-	private static Logger log = Logger.getLogger(ERSUserService.class);
+	private static Logger log = LogManager.getLogger(ERSUserService.class);
 	private static ERSUserDAO ud = new ERSUserDAO();
 	
 	public ERSUserService() {
