@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import com.revature.enums.ERSReimbursementStatus;
 import com.revature.enums.ERSReimbursementType;
 
-public class ERSReimbursement {
+public class ERSReimbursement implements Comparable {
 	private long reimbID;
 	private double reimbAmount;
 	private LocalDateTime reimbSubmitted;
@@ -108,6 +108,12 @@ public class ERSReimbursement {
 	}
 
 	@Override
+	public int compareTo(Object other) {
+		long returnThis = (this.getReimbID() - ((ERSReimbursement) other).getReimbID() );
+		return ((Long) returnThis).intValue();
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -171,4 +177,5 @@ public class ERSReimbursement {
 				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus
 				+ ", reimbType=" + reimbType + "]";
 	}
+
 }

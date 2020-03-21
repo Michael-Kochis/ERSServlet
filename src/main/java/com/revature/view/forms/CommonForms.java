@@ -79,8 +79,6 @@ public class CommonForms {
 		if (ERSUserService.isAdminByName(name)) {
 			return reimbAdminForm();
 		} else {
-			System.out.println("User form detected.");
-			System.out.println(reimbUserForm(name) );
 			return reimbUserForm(name);
 		}
 	}

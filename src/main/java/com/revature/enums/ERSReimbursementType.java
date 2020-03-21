@@ -34,4 +34,14 @@ public enum ERSReimbursementType {
 		}
 	}
 
+	public static ERSReimbursementType parse(String s) {
+		if (s == null) return OTHER;
+		switch (s) {
+		case "Food": return FOOD;
+		case "Lodging": return LODGING;
+		case "Travel": return TRAVEL;
+		default: return OTHER;
+		}
+	}
+
 }

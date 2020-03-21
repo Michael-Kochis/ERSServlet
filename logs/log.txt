@@ -961,3 +961,49 @@ Caused by: Error : 904, Position : 149, Sql = UPDATE ERS_USERS SET ERS_USERNAME 
 2020-03-21 11:51:45 INFO  LoginServlet:38 - User ERS_Emerald has logged in.
 2020-03-21 11:52:15 INFO  LoginServlet:38 - User TomFool has logged in.
 2020-03-21 11:54:00 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 11:58:10 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 12:24:52 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 12:26:38 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 12:33:46 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 12:33:58 WARN  ERSReimbursementDAO:42 - Error encountered writing to ERS_REIMBURSEMENT table.
+java.sql.SQLException: Missing IN or OUT parameter at index:: 3
+	at oracle.jdbc.driver.OraclePreparedStatement.processCompletedBindRow(OraclePreparedStatement.java:1937) ~[ojdbc8-19.3.0.0.jar:19.3.0.0.0]
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3657) ~[ojdbc8-19.3.0.0.jar:19.3.0.0.0]
+	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1426) ~[ojdbc8-19.3.0.0.jar:19.3.0.0.0]
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3778) ~[ojdbc8-19.3.0.0.jar:19.3.0.0.0]
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1081) ~[ojdbc8-19.3.0.0.jar:19.3.0.0.0]
+	at com.revature.dao.ERSReimbursementDAO.createReimbursement(ERSReimbursementDAO.java:40) [classes/:?]
+	at com.revature.service.ERSReimbursementService.create(ERSReimbursementService.java:16) [classes/:?]
+	at com.revature.view.servlet.ReimbServlet.doPost(ReimbServlet.java:56) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) [servlet-api.jar:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [servlet-api.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [catalina.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-websocket.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [catalina.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [catalina.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [catalina.jar:9.0.31]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688) [catalina.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [catalina.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-coyote.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-coyote.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-coyote.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) [tomcat-coyote.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:9.0.31]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:1.8.0_241]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:1.8.0_241]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.31]
+	at java.lang.Thread.run(Unknown Source) [?:1.8.0_241]
+2020-03-21 12:34:56 INFO  LoginServlet:38 - User TomFool has logged in.
+2020-03-21 12:42:53 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 12:55:43 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 12:57:55 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 12:58:40 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 13:00:40 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 13:09:38 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-21 13:15:41 INFO  LoginServlet:37 - User TomFool has logged in.

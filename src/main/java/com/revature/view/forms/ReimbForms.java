@@ -29,13 +29,13 @@ public class ReimbForms {
 		
 		sb.append("<title>Welcome to Emerald ERS</title>");
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
-		sb.append("<label>" + user + "</label>\n\r");
+		sb.append("<label>" + user.getERSUserName() + "</label><br>");
 		sb.append(SelectBox.ERSTypeBox() );
-		sb.append("<br><label>Description</label>");
-		sb.append("<input type=\"textarea\" name=\"description\" />\n\r");
-		sb.append("<label>Amount</label>");
-		sb.append("<input type=\"textarea\" name=\"amount\" />\n\r");
-		sb.append("\n\r<button type=\"submit\" value=\"neoReimb\" name=\"action\" />Submit</button>");
+		sb.append("<br><label>Description</label><br>");
+		sb.append("<input type=\"textarea\" name=\"description\" /><br>");
+		sb.append("<label>Amount</label><br>");
+		sb.append("<input type=\"textarea\" name=\"amount\" /><br>");
+		sb.append("<br><button type=\"submit\" value=\"neoReimb\" name=\"action\" />Submit</button>");
 		sb.append("</form>");
 		
 		return sb.toString();
