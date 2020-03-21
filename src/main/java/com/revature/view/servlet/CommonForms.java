@@ -1,5 +1,7 @@
 package com.revature.view.servlet;
 
+import com.revature.service.ERSUserService;
+
 public class CommonForms {
 	public static String landingPage() {
 		StringBuilder sb = new StringBuilder();
@@ -50,10 +52,32 @@ public class CommonForms {
 		return sb.toString();
 	}
 	
+	public static String reimbAdminForm() {
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
+	}
+	
+	public static String reimbUserForm() {
+		StringBuilder sb = new StringBuilder();
+		
+		return sb.toString();
+	}
+			
+	public static String selectReimbForm(String name) {
+		if (ERSUserService.isAdminByName(name)) {
+			System.out.println("Admin.");
+		} else {
+			System.out.println("User.");
+		}
+		
+		return null;
+	}
 	public static String userNameForm() {
 		return "<form method=\"POST\" action=\"/ERSServlet/register\">\r\n" + 
 	    		"<input type=\"textarea\" name=\"name\" />" +
 	      		"    <button type=\"submit\">Say Hello</button>\r\n" + 
 	      		"  </form>\r\n";
 	}
+
 }

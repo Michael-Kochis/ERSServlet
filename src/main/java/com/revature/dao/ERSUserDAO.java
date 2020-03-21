@@ -73,6 +73,11 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 		return returnThis;
 	}
 
+	public boolean isAdminByName(String name) {
+		ERSUser user = this.readUserByUsername(name);
+		return (user.getUserRoleID().equals(ERSUserRole.ERS_UR_FIN_ADM));
+	}
+
 	public boolean login(String username, String password) {
 		ERSUser test = readUserByUsername(username);
 		if (test == null) return false;

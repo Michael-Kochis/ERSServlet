@@ -22,20 +22,24 @@ public class ERSUserService {
 		ud.deleteERSUserByID(id);
 	}
 
-	public ERSUser readUserByID(long id) {
-		return ud.readUserByID(id);
-	}
-
-	public void updateUser(ERSUser user) {
-		ud.updateERSUser(user);
-	}
-
 	public static boolean login(String username, String password) {
 		return ud.login(username, password);
 	}
 
 	public static long getNextID() {
 		return ud.getNextID();
+	}
+
+	public static boolean isAdminByName(String name) {
+		return ud.isAdminByName(name);
+	}
+
+	public ERSUser readUserByID(long id) {
+		return ud.readUserByID(id);
+	}
+
+	public void updateUser(ERSUser user) {
+		ud.updateERSUser(user);
 	}
 
 }

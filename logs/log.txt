@@ -951,3 +951,4 @@ Caused by: Error : 904, Position : 149, Sql = UPDATE ERS_USERS SET ERS_USERNAME 
 	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:513)
 	... 46 more
 2020-03-17 11:09:52 TRACE ERSUserDAO:76 - Single record successfully deleted from ERS_Users table.
+2020-03-21 09:54:49 INFO  LoginServlet:37 - User ERS_Emerald has logged in.
