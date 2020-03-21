@@ -30,6 +30,14 @@
   	<url-pattern>/mainButton</url-pattern>
   </servlet-mapping>
   <servlet>
+  	<servlet-name>ReimbServlet</servlet-name>
+    <servlet-class>com.revature.view.servlet.ReimbServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ReimbServlet</servlet-name>
+  	<url-pattern>/reimbButton</url-pattern>
+  </servlet-mapping>
+  <servlet>
   	<servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.revature.view.servlet.RegisterServlet</servlet-class>
   </servlet>

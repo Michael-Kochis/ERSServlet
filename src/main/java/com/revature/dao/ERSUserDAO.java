@@ -75,6 +75,7 @@ public class ERSUserDAO implements ERSUserDAOInterface {
 
 	public boolean isAdminByName(String name) {
 		ERSUser user = this.readUserByUsername(name);
+		System.out.println("User " + user.getERSUserName() + " role: " + ERSUserRole.toString(user.getUserRoleID()) );
 		return (user.getUserRoleID().equals(ERSUserRole.ERS_UR_FIN_ADM));
 	}
 

@@ -11,10 +11,10 @@ public enum ERSUserRole {
 	}
 	
 	public static long typeToLong(ERSUserRole ersu) {
-		if (ersu.equals(ERS_UR_EMP)) {
-			return 0;
-		} else {
+		if (ersu == ERSUserRole.ERS_UR_FIN_ADM) {
 			return 1;
+		} else {
+			return 0;
 		}
 	}
 	

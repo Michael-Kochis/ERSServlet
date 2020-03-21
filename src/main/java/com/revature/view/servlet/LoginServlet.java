@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.revature.service.ERSUserService;
+import com.revature.view.forms.CommonForms;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -4938596647091194995L;

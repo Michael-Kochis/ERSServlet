@@ -12,6 +12,7 @@ import com.revature.enums.ERSUserRole;
 import com.revature.model.ERSUser;
 import com.revature.model.PHash;
 import com.revature.service.ERSUserService;
+import com.revature.view.forms.CommonForms;
 
 public class RegisterServlet extends HttpServlet {
 

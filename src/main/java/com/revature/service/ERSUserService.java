@@ -38,6 +38,10 @@ public class ERSUserService {
 		return ud.readUserByID(id);
 	}
 
+	public static ERSUser readERSUserByUsername(String name) {
+		return ud.readUserByUsername(name);
+	}
+
 	public void updateUser(ERSUser user) {
 		ud.updateERSUser(user);
 	}

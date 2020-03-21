@@ -13,6 +13,8 @@ import com.revature.dao.interfaces.ERSReimbursementDAOInterface;
 import com.revature.enums.ERSReimbursementStatus;
 import com.revature.enums.ERSReimbursementType;
 import com.revature.model.ERSReimbursement;
+import com.revature.model.ERSUser;
+import com.revature.service.ERSUserService;
 
 import oracle.sql.DATE;
 
@@ -66,6 +68,11 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 	public TreeSet<ERSReimbursement> readReimbursementsByOwnerID(long ID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public TreeSet<ERSReimbursement> readAllReimbursementsByOwnerName(String name) {
+		ERSUser user = ERSUserService.readERSUserByUsername(name);
+		return readReimbursementsByOwnerID(user.getERSUserID() );
 	}
 
 	public TreeSet<ERSReimbursement> readReimbursementsByStatus(ERSReimbursementStatus rs) {

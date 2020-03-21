@@ -1,4 +1,4 @@
-package com.revature.view.servlet;
+package com.revature.view.forms;
 
 import com.revature.service.ERSUserService;
 
@@ -55,24 +55,36 @@ public class CommonForms {
 	public static String reimbAdminForm() {
 		StringBuilder sb = new StringBuilder();
 		
+		sb.append("<title>Welcome to Emerald ERS</title>");
+		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
+		sb.append("\n\r<button type=\"submit\" value=\"newTicket\" name=\"action\" />Register</button>");
+		sb.append("</form>");
+		
 		return sb.toString();
 	}
 	
-	public static String reimbUserForm() {
+	public static String reimbUserForm(String name) {
 		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<title>Welcome to Emerald ERS</title>");
+		sb.append(ReimbForms.reimbsByName(name) );
+		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
+		sb.append("\n\r<button type=\"submit\" value=\"newReimb\" name=\"action\" />New Reimbursement</button>");
+		sb.append("</form>");
 		
 		return sb.toString();
 	}
 			
 	public static String selectReimbForm(String name) {
 		if (ERSUserService.isAdminByName(name)) {
-			System.out.println("Admin.");
+			return reimbAdminForm();
 		} else {
-			System.out.println("User.");
+			System.out.println("User form detected.");
+			System.out.println(reimbUserForm(name) );
+			return reimbUserForm(name);
 		}
-		
-		return null;
 	}
+
 	public static String userNameForm() {
 		return "<form method=\"POST\" action=\"/ERSServlet/register\">\r\n" + 
 	    		"<input type=\"textarea\" name=\"name\" />" +

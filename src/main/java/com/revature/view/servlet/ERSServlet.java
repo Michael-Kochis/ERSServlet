@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.Logger;
+
+import com.revature.view.forms.CommonForms;
+
 import org.apache.logging.log4j.LogManager;
 
 public class ERSServlet extends HttpServlet{
