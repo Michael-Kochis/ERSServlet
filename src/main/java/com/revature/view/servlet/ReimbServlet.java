@@ -19,6 +19,7 @@ import com.revature.model.ERSReimbursement;
 import com.revature.model.ERSUser;
 import com.revature.service.ERSReimbursementService;
 import com.revature.service.ERSUserService;
+import com.revature.view.forms.CommonForms;
 import com.revature.view.forms.ReimbForms;
 
 public class ReimbServlet extends HttpServlet {
@@ -28,6 +29,7 @@ public class ReimbServlet extends HttpServlet {
 	  @Override
 	  protected void doGet(HttpServletRequest req, HttpServletResponse res)
 	    throws IOException, ServletException {
+		  log.warn("Illegal use of GET method for ReimbServlet, will lose data.");
 		  doPost(req, res);
 	 }
 
@@ -40,23 +42,30 @@ public class ReimbServlet extends HttpServlet {
 		  String uName = (String) sess.getAttribute("username");
 		  ERSUser user = ERSUserService.readERSUserByUsername(uName);
 		  
-		  switch(action) {
-		  case "neoReimb":  
-			  long rID = ERSReimbursementService.getNextID();
-			  double amount = Double.parseDouble(req.getParameter("amount"));
-			  LocalDateTime submitted = LocalDateTime.now();
-			  String desc = req.getParameter("description");
-			  long author = user.getERSUserID();
-			  ERSReimbursementStatus rs = ERSReimbursementStatus.PENDING;
-			  ERSReimbursementType rt = ERSReimbursementType.parse(req.getParameter("type"));
-			  
-			  ERSReimbursement reimb = new ERSReimbursement(rID, amount, submitted, null, 
-					  desc, author, 0L, rs, rt);
-			  ERSReimbursementService.create(reimb);
-			  break;
-		  case "newReimb":  out.println(ReimbForms.NewReimb(user));
-							break;
-		  default:  log.warn("Invalid key detected.");
+		  if (action == null) {
+			  log.warn("Value of action button has been lost.");
+		  } else {
+			  switch(action) {
+			  case "logout":
+				  sess.invalidate();
+				  out.println(CommonForms.landingPage() );
+			  case "neoReimb":  
+				  long rID = ERSReimbursementService.getNextID();
+				  double amount = Double.parseDouble(req.getParameter("amount"));
+				  LocalDateTime submitted = LocalDateTime.now();
+				  String desc = req.getParameter("description");
+				  long author = user.getERSUserID();
+				  ERSReimbursementStatus rs = ERSReimbursementStatus.PENDING;
+				  ERSReimbursementType rt = ERSReimbursementType.parse(req.getParameter("type"));
+				  
+				  ERSReimbursement reimb = new ERSReimbursement(rID, amount, submitted, null, 
+						  desc, author, 0L, rs, rt);
+				  ERSReimbursementService.create(reimb);
+				  break;
+			  case "newReimb":  out.println(ReimbForms.NewReimb(user));
+								break;
+			  default:  log.warn("Invalid key detected: " + action);
+			  }
 		  }
 	 }
 
