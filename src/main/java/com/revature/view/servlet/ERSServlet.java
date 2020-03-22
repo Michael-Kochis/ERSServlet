@@ -26,8 +26,10 @@ public class ERSServlet extends HttpServlet{
 		  res.setContentType("text/html");
 		  
 	      PrintWriter out = res.getWriter();
+	      
 
-	      out.println("<h1>Welcome to Emerald ERS!</h1>");
+
+	      out.println("<h1 class=\"text-center\">Welcome to Emerald ERS!</h1>");
 	      out.println(CommonForms.landingPage() );
 	 }
 
@@ -45,7 +47,7 @@ public class ERSServlet extends HttpServlet{
 			
 			if (name == null) 
 				name = "World";
-		    out.println("<h1>Hello, " + name + "!</h1>");
+		    out.println("<h1 class=\"text-center\">Hello, " + name + "!</h1>");
 			out.println("Time is " + timeNow.toString());
 		    out.println(CommonForms.userNameForm());
 		} catch (IOException e) {

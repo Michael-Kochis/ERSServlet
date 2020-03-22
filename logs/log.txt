@@ -1087,3 +1087,4 @@ java.sql.SQLException: Invalid column index
 	at java.lang.Thread.run(Unknown Source) [?:1.8.0_241]
 2020-03-22 12:13:56 INFO  LoginServlet:37 - User ERS_Emerald has logged in.
 2020-03-22 12:17:10 INFO  LoginServlet:37 - User ERS_Emerald has logged in.
+2020-03-22 13:06:04 INFO  LoginServlet:37 - User TomFool has logged in.

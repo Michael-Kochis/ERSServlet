@@ -52,15 +52,15 @@ public class ReimbForms {
 	public static String NewReimb(ERSUser user) {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("<title>Welcome to Emerald ERS</title>");
+		sb.append(CommonForms.commonHeaders());
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
-		sb.append("<label>" + user.getERSUserName() + "</label><br>");
+		sb.append("<label class=\"font-weight-bold\">" + user.getERSUserName() + "</label><br>");
 		sb.append(SelectBox.ERSTypeBox() );
-		sb.append("<br><label>Description</label><br>");
+		sb.append("<br><label class=\"font-weight-bold\">Description</label><br>");
 		sb.append("<input type=\"textarea\" name=\"description\" /><br>");
-		sb.append("<label>Amount</label><br>");
+		sb.append("<label class=\"font-weight-bold\" >Amount</label><br>");
 		sb.append("<input type=\"textarea\" name=\"amount\" /><br>");
-		sb.append("<br><button type=\"submit\" value=\"neoReimb\" name=\"action\" />Submit</button>");
+		sb.append("<br><button type=\"submit\" value=\"neoReimb\" name=\"action\" class=\"btn btn-success\" />Submit</button>");
 		sb.append("</form>");
 		
 		return sb.toString();
@@ -81,8 +81,8 @@ public class ReimbForms {
 				sb.append("<br>" + reimb.getReimbDescription());
 				sb.append("<form action=\"/ERSServlet/reimbButton/");
 				sb.append(reimb.getReimbID() + "\" method=\"POST\">");
-				sb.append("\n\r<button type=\"submit\" value=\"approve\" name=\"action\" />Approve</button>");
-				sb.append("\n\r<button type=\"submit\" value=\"deny\" name=\"action\" />Deny</button>");
+				sb.append("\n\r<button type=\"submit\" value=\"approve\" name=\"action\" class=\"btn btn-success\" />Approve</button>");
+				sb.append("\n\r<button type=\"submit\" value=\"deny\" name=\"action\" class=\"btn btn-danger\" />Deny</button>");
 				sb.append("</form>");
 				
 				sb.append("\n\r");
