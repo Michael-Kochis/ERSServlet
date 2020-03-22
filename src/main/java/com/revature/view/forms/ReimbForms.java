@@ -2,6 +2,7 @@ package com.revature.view.forms;
 
 import java.util.TreeSet;
 
+import com.revature.enums.ERSReimbursementStatus;
 import com.revature.enums.ERSReimbursementType;
 import com.revature.model.ERSReimbursement;
 import com.revature.model.ERSUser;
@@ -61,6 +62,27 @@ public class ReimbForms {
 		sb.append("<input type=\"textarea\" name=\"amount\" /><br>");
 		sb.append("<br><button type=\"submit\" value=\"neoReimb\" name=\"action\" />Submit</button>");
 		sb.append("</form>");
+		
+		return sb.toString();
+	}
+
+	public static Object allPendingReimbs() {
+		StringBuilder sb = new StringBuilder();
+		
+		TreeSet<ERSReimbursement> set = ERSReimbursementService.getReimbursementsByStatus(ERSReimbursementStatus.PENDING);
+		
+		if (set != null) {
+			for (ERSReimbursement reimb : set) {
+				sb.append(reimb.getReimbID());
+				sb.append(" " + ERSReimbursementType.toString(reimb.getReimbType()) );
+				sb.append(" " + reimb.getReimbAmount());
+				sb.append(" "+ reimb.getReimbSubmitted());
+				sb.append(" " + reimb.getReimbStatus());
+				sb.append("<br>" + reimb.getReimbDescription());
+				
+				sb.append("\n\r");
+			}
+		}
 		
 		return sb.toString();
 	}

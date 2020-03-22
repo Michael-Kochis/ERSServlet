@@ -1035,3 +1035,6 @@ java.sql.SQLException: Missing IN or OUT parameter at index:: 3
 2020-03-22 09:34:26 INFO  LoginServlet:37 - User TomFool has logged in.
 2020-03-22 09:35:27 INFO  LoginServlet:37 - User TomFool has logged in.
 2020-03-22 09:36:30 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-22 10:18:40 INFO  LoginServlet:37 - User ERS_Emerald has logged in.
+2020-03-22 10:20:22 INFO  LoginServlet:37 - User ERS_Emerald has logged in.
+2020-03-22 10:24:53 INFO  LoginServlet:37 - User ERS_Emerald has logged in.

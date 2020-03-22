@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.revature.dao.ERSReimbursementDAO;
+import com.revature.enums.ERSReimbursementStatus;
 import com.revature.model.ERSReimbursement;
 
 public class ERSReimbursementService {
@@ -22,6 +23,10 @@ public class ERSReimbursementService {
 
 	public static long getNextID() {
 		return rd.getNextID();
+	}
+
+	public static TreeSet<ERSReimbursement> getReimbursementsByStatus(ERSReimbursementStatus status) {
+		return rd.readReimbursementsByStatus(status);
 	}
 
 }

@@ -151,9 +151,42 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 		return readReimbursementsByOwnerID(user.getERSUserID() );
 	}
 
-	public TreeSet<ERSReimbursement> readReimbursementsByStatus(ERSReimbursementStatus rs) {
-		// TODO Auto-generated method stub
-		return null;
+	public TreeSet<ERSReimbursement> readReimbursementsByStatus(ERSReimbursementStatus rstat) {
+		TreeSet<ERSReimbursement> returnThis = new TreeSet<ERSReimbursement>();
+		
+		try { 
+		     Connection testConn = JDBCConnector.getConn();
+		     PreparedStatement st = testConn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIMB_STATUS_ID = ?");
+		     st.setLong(1, ERSReimbursementStatus.typeToLong(rstat));
+		     ResultSet rs = st.executeQuery();
+		     
+		     while (rs.next()) {
+		    	 long rID = rs.getLong("REIMB_ID");
+		    	 double amount = rs.getDouble("REIMB_AMOUNT");
+		    	 LocalDateTime submit = rs.getTimestamp("REIMB_SUBMITTED").toLocalDateTime();
+		    	 Timestamp tsr = rs.getTimestamp("REIMB_RESOLVED");
+		    	 LocalDateTime resolved = null;
+	
+		    	 if (tsr == null) {
+		    		 resolved = null;
+		    	 } else {
+		    	     resolved = tsr.toLocalDateTime();
+		     	 }
+		    	 
+		     	 String desc = rs.getString("REIMB_DESCRIPTION");
+		    	 long authID = rs.getLong("REIMB_AUTHOR");
+		    	 long rslvID = rs.getLong("REIMB_RESOLVER");
+		    	 ERSReimbursementStatus status = ERSReimbursementStatus.longToType(rs.getLong("REIMB_STATUS_ID"));
+		    	 ERSReimbursementType type = ERSReimbursementType.longToType(rs.getLong("REIMB_TYPE_ID"));
+
+		    	 ERSReimbursement neo = new ERSReimbursement(rID, amount, submit, resolved, desc, authID, rslvID, status, type);
+		    	 returnThis.add(neo);
+		     }
+		} catch (SQLException e) {
+			log.warn("Error while reading max value from ERS_Reimbursement table.", e);
+		}
+		
+		return returnThis;
 	}
 
 	public void updateReimbursement(ERSReimbursement reimb) {

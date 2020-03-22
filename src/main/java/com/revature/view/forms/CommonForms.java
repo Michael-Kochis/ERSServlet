@@ -47,6 +47,7 @@ public class CommonForms {
 		sb.append("\n\r<label>Email</label>");
 		sb.append("<input type=\"text\" name=\"email\" /><br>");
 		sb.append("\n\r<button type=\"submit\" value=\"register\" name=\"action\" />Register</button>");
+		sb.append("<button type=\"submit\" value=\"login\" name=\"action\">Login Instead</button>");
 		sb.append("</form>\r\n");
 		
 		return sb.toString();
@@ -56,8 +57,10 @@ public class CommonForms {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("<title>Welcome to Emerald ERS</title>");
+		sb.append(ReimbForms.allPendingReimbs() );
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
 		sb.append("\n\r<button type=\"submit\" value=\"newTicket\" name=\"action\" />Register</button>");
+		sb.append("\n\r<button type=\"submit\" value=\"logout\" name=\"action\" />Logout</button>");
 		sb.append("</form>");
 		
 		return sb.toString();
