@@ -70,6 +70,7 @@ public class CommonForms {
 		sb.append(ReimbForms.reimbsByName(name) );
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
 		sb.append("\n\r<button type=\"submit\" value=\"newReimb\" name=\"action\" />New Reimbursement</button>");
+		sb.append("\n\r<button type=\"submit\" value=\"logout\" name=\"action\" />Logout</button>");
 		sb.append("</form>");
 		
 		return sb.toString();

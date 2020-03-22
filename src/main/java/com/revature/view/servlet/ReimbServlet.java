@@ -48,7 +48,9 @@ public class ReimbServlet extends HttpServlet {
 			  switch(action) {
 			  case "logout":
 				  sess.invalidate();
-				  out.println(CommonForms.landingPage() );
+				  //out.println(CommonForms.landingPage() );
+				  res.sendRedirect("ers");
+				  break;
 			  case "neoReimb":  
 				  long rID = ERSReimbursementService.getNextID();
 				  double amount = Double.parseDouble(req.getParameter("amount"));

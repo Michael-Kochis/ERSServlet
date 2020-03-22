@@ -27,7 +27,7 @@ public class ERSServlet extends HttpServlet{
 		  
 	      PrintWriter out = res.getWriter();
 
-	      out.println("<h1>Hello World!</h1>");
+	      out.println("<h1>Welcome to Emerald ERS!</h1>");
 	      out.println(CommonForms.landingPage() );
 	 }
 
