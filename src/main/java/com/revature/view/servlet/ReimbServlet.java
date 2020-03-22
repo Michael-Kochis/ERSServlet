@@ -42,28 +42,34 @@ public class ReimbServlet extends HttpServlet {
 		  String uName = (String) sess.getAttribute("username");
 		  ERSUser user = ERSUserService.readERSUserByUsername(uName);
 		  String url = null;
+		  long modify = 0L;
+		  
+		  if (req instanceof HttpServletRequest) {
+			  switch(action) {
+			    case "approve":
+			    case "deny":	  
+				  url = ((HttpServletRequest)req).getRequestURL().toString();
+				  String[] ursa = url.split("/");
+				  modify = Long.parseLong(ursa[ursa.length-1]);
+				  break;
+			    default: break;	  
+			  }
+		  }
 		  
 		  if (action == null) {
 			  log.warn("Value of action button has been lost.");
 		  } else {
 			  switch(action) {
 			  case "approve":
-				  
-				  System.out.println("Approve detected.");
-				  if (req instanceof HttpServletRequest) {
-					  url = ((HttpServletRequest)req).getRequestURL().toString();
-					  String queryString = ((HttpServletRequest)req).getQueryString();
-				  }
-				  System.out.println("URL: " + url);
+				  ERSReimbursementService.update(modify, uName, ERSReimbursementStatus.APPROVED);
 				  out.println(CommonForms.selectReimbForm(uName));
 				  break;
 			  case "deny":
-				  System.out.println("Denial detected.");
+				  ERSReimbursementService.update(modify, uName, ERSReimbursementStatus.DENIED);
 				  out.println(CommonForms.selectReimbForm(uName));
 				  break;
 			  case "logout":
 				  sess.invalidate();
-				  //out.println(CommonForms.landingPage() );
 				  res.sendRedirect("ers");
 				  break;
 			  case "neoReimb":  

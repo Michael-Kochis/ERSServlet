@@ -11,7 +11,7 @@ public interface ERSReimbursementDAOInterface {
     public void deleteReimbursementByID(long ID);
     public long getNextID();
     public TreeSet<ERSReimbursement> readAllReimbursements();
-    public TreeSet<ERSReimbursement> readReimbursementsByID(long ID);
+    public ERSReimbursement readReimbursementByID(long ID);
     public TreeSet<ERSReimbursement> readReimbursementsByOwnerID(long ID);
     public TreeSet<ERSReimbursement> readReimbursementsByStatus(ERSReimbursementStatus rs);
     public void updateReimbursement(ERSReimbursement reimb);

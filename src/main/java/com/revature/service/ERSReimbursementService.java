@@ -29,4 +29,8 @@ public class ERSReimbursementService {
 		return rd.readReimbursementsByStatus(status);
 	}
 
+	public static void update(long modify, String username, ERSReimbursementStatus status) {
+		rd.updateStatus(modify, username, status);
+	}
+
 }

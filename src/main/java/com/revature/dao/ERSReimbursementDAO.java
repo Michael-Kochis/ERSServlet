@@ -78,8 +78,8 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 		return null;
 	}
 
-	public TreeSet<ERSReimbursement> readReimbursementsByID(long ID) {
-		TreeSet<ERSReimbursement> returnThis = new TreeSet<ERSReimbursement>();
+	public ERSReimbursement readReimbursementByID(long ID) {
+		ERSReimbursement returnThis = null;
 		
 		try { 
 		     Connection testConn = JDBCConnector.getConn();
@@ -87,19 +87,23 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 		     st.setLong(1, ID);
 		     ResultSet rs = st.executeQuery();
 		     
-		     while (rs.next()) {
+		     if (rs.next()) {
 		    	 long rID = rs.getLong("REIMB_ID");
 		    	 double amount = rs.getDouble("REIMB_AMOUNT");
 		    	 LocalDateTime submit = rs.getTimestamp("REIMB_SUBMITTED").toLocalDateTime();
-		    	 LocalDateTime resolved = rs.getTimestamp("REIMB_RESOLVED").toLocalDateTime();
+		    	 LocalDateTime resolved = null;
+		    	 if (rs.getTimestamp("REIMB_RESOLVED") == null) {
+		    	    resolved = null;
+		    	 } else {
+		    	   resolved = rs.getTimestamp("REIMB_RESOLVED").toLocalDateTime();
+		    	 }
 		    	 String desc = rs.getString("REIMB_DESCRIPTION");
 		    	 long authID = rs.getLong("REIMB_AUTHOR");
 		    	 long rslvID = rs.getLong("REIMB_RESOLVER");
 		    	 ERSReimbursementStatus status = ERSReimbursementStatus.longToType(rs.getLong("REIMB_STATUS_ID"));
 		    	 ERSReimbursementType type = ERSReimbursementType.longToType(rs.getLong("REIMB_TYPE_ID"));
 
-		    	 ERSReimbursement neo = new ERSReimbursement(rID, amount, submit, resolved, desc, authID, rslvID, status, type);
-		    	 returnThis.add(neo);
+		    	 returnThis = new ERSReimbursement(rID, amount, submit, resolved, desc, authID, rslvID, status, type);
 		     }
 		} catch (SQLException e) {
 			log.warn("Error while reading max value from ERS_Reimbursement table.", e);
@@ -190,8 +194,29 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 	}
 
 	public void updateReimbursement(ERSReimbursement reimb) {
-		// TODO Auto-generated method stub
+		try {
+		     Connection testConn = JDBCConnector.getConn();
+		     PreparedStatement st = testConn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = ?, REIMB_RESOLVER = ?, REIMB_STATUS_ID = ? WHERE REIMB_ID = ?");
+			 st.setTimestamp(1, Timestamp.valueOf(reimb.getReimbResolved()) );
+			 st.setLong(2, reimb.getReimbResolver());
+			 st.setLong(3, ERSReimbursementStatus.typeToLong(reimb.getReimbStatus()) ); 
+			 st.setLong(4, reimb.getReimbID());
+		     
+		     st.execute();
+		     log.trace("Single record successfully updated in ERS_Reimbursement table.");
+		} catch (SQLException e) {
+			log.warn("Error while updating record ERS_Reimbursement table.", e);
+		}
+	}
 
+	public void updateStatus(long ID, String username, ERSReimbursementStatus status) {
+		ERSReimbursement reimb = readReimbursementByID(ID);
+		ERSUser user = ERSUserService.readERSUserByUsername(username);
+		reimb.setReimbResolver(user.getERSUserID() );
+		reimb.setReimbResolved(LocalDateTime.now());
+		reimb.setReimbStatus(status);
+		
+		updateReimbursement(reimb);
 	}
 
 }
