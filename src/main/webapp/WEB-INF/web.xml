@@ -44,6 +44,7 @@
   <servlet-mapping>
   	<servlet-name>ReimbServlet</servlet-name>
   	<url-pattern>/reimbButton</url-pattern>
+  	<url-pattern>/reimbButton/*</url-pattern>
   </servlet-mapping>
   <servlet>
   	<servlet-name>RegisterServlet</servlet-name>

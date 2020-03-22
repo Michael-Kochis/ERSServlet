@@ -79,6 +79,11 @@ public class ReimbForms {
 				sb.append(" "+ reimb.getReimbSubmitted());
 				sb.append(" " + reimb.getReimbStatus());
 				sb.append("<br>" + reimb.getReimbDescription());
+				sb.append("<form action=\"/ERSServlet/reimbButton/");
+				sb.append(reimb.getReimbID() + "\" method=\"POST\">");
+				sb.append("\n\r<button type=\"submit\" value=\"approve\" name=\"action\" />Approve</button>");
+				sb.append("\n\r<button type=\"submit\" value=\"deny\" name=\"action\" />Deny</button>");
+				sb.append("</form>");
 				
 				sb.append("\n\r");
 			}

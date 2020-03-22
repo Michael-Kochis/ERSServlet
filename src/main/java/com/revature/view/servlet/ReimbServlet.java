@@ -41,11 +41,26 @@ public class ReimbServlet extends HttpServlet {
 		  String action = req.getParameter("action");
 		  String uName = (String) sess.getAttribute("username");
 		  ERSUser user = ERSUserService.readERSUserByUsername(uName);
+		  String url = null;
 		  
 		  if (action == null) {
 			  log.warn("Value of action button has been lost.");
 		  } else {
 			  switch(action) {
+			  case "approve":
+				  
+				  System.out.println("Approve detected.");
+				  if (req instanceof HttpServletRequest) {
+					  url = ((HttpServletRequest)req).getRequestURL().toString();
+					  String queryString = ((HttpServletRequest)req).getQueryString();
+				  }
+				  System.out.println("URL: " + url);
+				  out.println(CommonForms.selectReimbForm(uName));
+				  break;
+			  case "deny":
+				  System.out.println("Denial detected.");
+				  out.println(CommonForms.selectReimbForm(uName));
+				  break;
 			  case "logout":
 				  sess.invalidate();
 				  //out.println(CommonForms.landingPage() );

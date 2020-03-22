@@ -9,7 +9,7 @@ public class CommonForms {
 		sb.append("<form action=\"/ERSServlet/mainButton\" method=\"POST\">");
 		sb.append("<button type=\"submit\" value=\"login\" name=\"action\">Login</button>");
 		sb.append("<button type=\"submit\" value=\"register\" name=\"action\" />Register</button>");
-		sb.append("</form>\r\n");
+		sb.append("</form>");
 		
 		return sb.toString();
 	}
@@ -59,7 +59,7 @@ public class CommonForms {
 		sb.append("<title>Welcome to Emerald ERS</title>");
 		sb.append(ReimbForms.allPendingReimbs() );
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");
-		sb.append("\n\r<button type=\"submit\" value=\"newTicket\" name=\"action\" />Register</button>");
+		sb.append("\n\r<button type=\"submit\" value=\"newTicket\" name=\"action\" />New Ticket</button>");
 		sb.append("\n\r<button type=\"submit\" value=\"logout\" name=\"action\" />Logout</button>");
 		sb.append("</form>");
 		
