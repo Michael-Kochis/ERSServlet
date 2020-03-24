@@ -49,8 +49,16 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 	}
 
 	public void deleteReimbursementByID(long ID) {
-		// TODO Auto-generated method stub
-
+		try {
+		     Connection testConn = JDBCConnector.getConn();
+		     PreparedStatement st = testConn.prepareStatement("DELETE FROM ERS_REIMBURSEMENT WHERE REIMB_ID = ?");
+		     st.setLong(1, ID);
+		     st.execute();
+		     
+		     log.trace("Single record successfully deleted from ERS_REIMBURSEMENT table.");
+		} catch (SQLException e) {
+			log.warn("Error while deleting record from ERS_REIMBURSEMENT table.", e);
+		}
 	}
 
 	public long getNextID() {
@@ -75,8 +83,36 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 	}
 
 	public TreeSet<ERSReimbursement> readAllReimbursements() {
-		// TODO Auto-generated method stub
-		return null;
+		TreeSet<ERSReimbursement> returnThis = new TreeSet<ERSReimbursement>();
+		
+		try { 
+		     Connection testConn = JDBCConnector.getConn();
+		     PreparedStatement st = testConn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT");
+		     ResultSet rs = st.executeQuery();
+		     
+		     while (rs.next()) {
+		    	 long rID = rs.getLong("REIMB_ID");
+		    	 double amount = rs.getDouble("REIMB_AMOUNT");
+		    	 LocalDateTime submit = rs.getTimestamp("REIMB_SUBMITTED").toLocalDateTime();
+		    	 LocalDateTime resolved = null;
+		    	 if (rs.getTimestamp("REIMB_RESOLVED") == null) {
+		    	    resolved = null;
+		    	 } else {
+		    	   resolved = rs.getTimestamp("REIMB_RESOLVED").toLocalDateTime();
+		    	 }
+		    	 String desc = rs.getString("REIMB_DESCRIPTION");
+		    	 long authID = rs.getLong("REIMB_AUTHOR");
+		    	 long rslvID = rs.getLong("REIMB_RESOLVER");
+		    	 ERSReimbursementStatus status = ERSReimbursementStatus.longToType(rs.getLong("REIMB_STATUS_ID"));
+		    	 ERSReimbursementType type = ERSReimbursementType.longToType(rs.getLong("REIMB_TYPE_ID"));
+
+		    	 returnThis.add(new ERSReimbursement(rID, amount, submit, resolved, desc, authID, rslvID, status, type) );
+		     }
+		} catch (SQLException e) {
+			log.warn("Error while reading max value from ERS_Reimbursement table.", e);
+		}
+		
+		return returnThis;
 	}
 
 	public ERSReimbursement readReimbursementByID(long ID) {
