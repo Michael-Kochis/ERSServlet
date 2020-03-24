@@ -29,6 +29,10 @@ public class ERSReimbursementService {
 		return rd.readReimbursementsByStatus(status);
 	}
 
+	public static void setReceipt(long ID, byte[] buffer) {
+		rd.setReciptByReimbursementID(ID, buffer);
+	}
+
 	public static void update(long modify, String username, ERSReimbursementStatus status) {
 		rd.updateStatus(modify, username, status);
 	}

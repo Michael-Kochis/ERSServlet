@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -191,6 +192,23 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 		}
 		
 		return returnThis;
+	}
+
+	public void setReciptByReimbursementID(long ID, byte[] buffer) {
+		try {
+		     Connection testConn = JDBCConnector.getConn();
+		     Blob neoBlob = testConn.createBlob();
+		     neoBlob.setBytes(1L, buffer);
+		     PreparedStatement st = testConn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIMB_RECEIPT = ? WHERE REIMB_ID = ?");
+		     st.setBlob(1, neoBlob);
+		     st.setLong(2, ID);
+
+		     st.execute();
+		     log.trace("Single record successfully updated in ERS_Reimbursement table.");
+		} catch (SQLException e) {
+			log.warn("Error while updating record ERS_Reimbursement table.", e);
+		}
+		
 	}
 
 	public void updateReimbursement(ERSReimbursement reimb) {

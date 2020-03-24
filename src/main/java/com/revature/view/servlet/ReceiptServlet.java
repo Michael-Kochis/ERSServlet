@@ -1,5 +1,8 @@
 package com.revature.view.servlet;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -15,10 +18,12 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.revature.service.ERSReimbursementService;
 import com.revature.view.forms.CommonForms;
 
 public class ReceiptServlet extends HttpServlet {
@@ -41,14 +46,22 @@ public class ReceiptServlet extends HttpServlet {
 	                String fieldName = item.getFieldName();
 	                String fileName = FilenameUtils.getName(item.getName());
 	                InputStream fileContent = item.getInputStream();
+	                Long ticket = Long.parseLong(req.getPathInfo().replace('/', ' ').trim() );
 	                
 	                // do file stuff here.
 	                PrintWriter out = res.getWriter();
 	                HttpSession sess = req.getSession();
 	                String name = (String) sess.getAttribute("username");
 	                
-	                out.println(fileName);
-	                out.println("<img src=\"filename\" alt=\"Not working yet.\" /><br>");
+	                out.println("<br>" + ticket + "<br>");
+	                
+					out.println(fileName);
+	                out.println(fileContent.toString() + "\n\r");
+	                out.println("<br>" + item + "<br>");
+	                byte[] buffer = new byte[fileContent.available()];
+	                out.println("<br>" + buffer + "<br>");
+	                ERSReimbursementService.setReceipt(ticket, buffer);
+	                out.println("<img src=\"data:image/png;base64,\" + ${{item}} alt=\"Not working yet.\" /><br>");
 	                out.println(CommonForms.reimbUserForm(name));
 	            }
 	        }

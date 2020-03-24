@@ -15,7 +15,7 @@ public class ReimbForms {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("<form action=\"/ERSServlet/receipt");
-		//sb.append("/" + ID + "");
+		sb.append("/" + ID + "");
 		sb.append("\" method=\"POST\"");
 		sb.append("enctype=\"multipart/form-data\"");
 		sb.append(">");

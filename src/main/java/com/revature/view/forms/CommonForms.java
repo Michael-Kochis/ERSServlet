@@ -28,9 +28,9 @@ public class CommonForms {
 		
 		sb.append(CommonForms.commonHeaders());
 		sb.append("<form action=\"/ERSServlet/login\" method=\"POST\">");
-		sb.append("<label class=\"font-weight-bold\">Username</label>");
+		sb.append("<label class=\"font-weight-bold\">Username</label><br>");
 		sb.append("<input type=\"textarea\" name=\"username\" /><br>");
-		sb.append("\n\r<label class=\"font-weight-bold\">Password</label>");
+		sb.append("\n\r<label class=\"font-weight-bold\">Password</label><br>");
 		sb.append("<input type=\"password\" name=\"password\" /><br>");
 		sb.append("\n\r<button type=\"submit\" value=\"login\" name=\"action\" class=\"btn btn-primary\" />Login</button>");
 		sb.append("</form>\r\n");

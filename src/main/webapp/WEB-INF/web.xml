@@ -36,6 +36,7 @@
   <servlet-mapping>
   	<servlet-name>ReceiptServlet</servlet-name>
   	<url-pattern>/receipt</url-pattern>
+  	<url-pattern>/receipt/*</url-pattern>
   </servlet-mapping>
   <servlet>
   	<servlet-name>ReimbServlet</servlet-name>
