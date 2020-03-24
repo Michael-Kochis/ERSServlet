@@ -65,6 +65,7 @@ public class CommonForms {
 	public static String reimbAdminForm() {
 		StringBuilder sb = new StringBuilder();
 		
+		sb.append("<h3>Admin Tools</h3><br>");
 		sb.append(CommonForms.commonHeaders());
 		sb.append(ReimbForms.allPendingReimbs() );
 		sb.append("<form action=\"/ERSServlet/reimbButton\" method=\"POST\">");

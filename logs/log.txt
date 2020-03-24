@@ -1236,3 +1236,14 @@ Caused by: oracle.jdbc.OracleDatabaseException: ORA-00904: "ERS_USER_ID": invali
 	... 64 more
 2020-03-24 06:35:53 INFO  LoginServlet:37 - User TomFool has logged in.
 2020-03-24 06:37:03 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-24 06:43:06 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-24 06:45:13 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-24 06:46:34 INFO  LoginServlet:37 - User TomFool has logged in.
+2020-03-24 06:49:55 TRACE JDBCConnector:36 - New connection to database established.
+2020-03-24 06:49:55 TRACE ERSReimbursementDAO:208 - Single record successfully updated in ERS_Reimbursement table.
+2020-03-24 06:49:55 TRACE ERSUserDAO:163 - Single record successfully read from ERS_Users table.
+2020-03-24 06:49:55 TRACE ERSReimbursementDAO:151 - 1 records returned from ERS_Reimbursement table.
+2020-03-24 06:50:06 TRACE ERSReimbursementDAO:208 - Single record successfully updated in ERS_Reimbursement table.
+2020-03-24 06:50:06 TRACE ERSUserDAO:163 - Single record successfully read from ERS_Users table.
+2020-03-24 06:50:06 TRACE ERSReimbursementDAO:151 - 1 records returned from ERS_Reimbursement table.
+2020-03-24 06:50:14 TRACE ERSUserDAO:163 - Single record successfully read from ERS_Users table.

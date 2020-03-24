@@ -148,6 +148,7 @@ public class ERSReimbursementDAO implements ERSReimbursementDAOInterface {
 			log.warn("Error while reading max value from ERS_Reimbursement table.", e);
 		}
 		
+		log.trace(returnThis.size() + " records returned from ERS_Reimbursement table.");
 		return returnThis;
 	}
 

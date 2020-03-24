@@ -46,20 +46,21 @@ public class ReceiptServlet extends HttpServlet {
 	                String fieldName = item.getFieldName();
 	                String fileName = FilenameUtils.getName(item.getName());
 	                InputStream fileContent = item.getInputStream();
-	                Long ticket = Long.parseLong(req.getPathInfo().replace('/', ' ').trim() );
 	                
-	                // do file stuff here.
+	                Long ticket = Long.parseLong(req.getPathInfo().replace('/', ' ').trim() );
+	                byte[] buffer = new byte[fileContent.available()];
+	                
 	                PrintWriter out = res.getWriter();
 	                HttpSession sess = req.getSession();
 	                String name = (String) sess.getAttribute("username");
 	                
+	                // do file stuff here.
 	                out.println("<br>" + ticket + "<br>");
 	                
 					out.println(fileName);
 	                out.println(fileContent.toString() + "\n\r");
 	                out.println("<br>" + item + "<br>");
-	                byte[] buffer = new byte[fileContent.available()];
-	                out.println("<br>" + buffer + "<br>");
+	                
 	                ERSReimbursementService.setReceipt(ticket, buffer);
 	                out.println("<img src=\"data:image/png;base64,\" + ${{item}} alt=\"Not working yet.\" /><br>");
 	                out.println(CommonForms.reimbUserForm(name));
