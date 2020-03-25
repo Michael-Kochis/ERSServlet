@@ -24,15 +24,15 @@ public class ERSReimbursement implements Comparable {
 			String reimbDescription, long reimbAuthor, long reimbResolver, ERSReimbursementStatus reimbStatus,
 			ERSReimbursementType reimbType) {
 		super();
-		this.reimbID = reimbID;
-		this.reimbAmount = reimbAmount;
-		this.reimbSubmitted = reimbSubmitted;
-		this.reimbResolved = reimbResolved;
-		this.reimbDescription = reimbDescription;
-		this.reimbAuthor = reimbAuthor;
-		this.reimbResolver = reimbResolver;
-		this.reimbStatus = reimbStatus;
-		this.reimbType = reimbType;
+		this.setReimbID(reimbID);
+		this.setReimbAmount(reimbAmount);
+		this.setReimbSubmitted(reimbSubmitted);
+		this.setReimbResolved(reimbResolved);
+		this.setReimbDescription(reimbDescription);
+		this.setReimbAuthor(reimbAuthor);
+		this.setReimbResolver(reimbResolver);
+		this.setReimbStatus(reimbStatus);
+		this.setReimbType(reimbType);
 	}
 
 	public long getReimbID() {

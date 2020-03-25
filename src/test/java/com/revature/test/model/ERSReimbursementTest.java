@@ -8,7 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.revature.model.ERSReimbursement;
+
 public class ERSReimbursementTest {
+	private ERSReimbursement reimb = new ERSReimbursement();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -27,8 +30,22 @@ public class ERSReimbursementTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testInstantiate() {	
+		assertTrue(reimb != null);
+	}
+	
+	@Test
+	public void testCompare() {
+		ERSReimbursement r2 = new ERSReimbursement();
+		
+		assertTrue(reimb.compareTo(r2) == 0);
+	}
+
+	@Test
+	public void testEquals() {
+		ERSReimbursement r2 = new ERSReimbursement();
+		
+		assertTrue(reimb.equals(r2));
 	}
 
 }

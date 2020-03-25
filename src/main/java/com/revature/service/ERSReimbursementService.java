@@ -16,7 +16,7 @@ public class ERSReimbursementService {
 	public static void create(ERSReimbursement reimb) {
 		rd.createReimbursement(reimb);
 	}
-
+	
 	public static TreeSet<ERSReimbursement> getReimbursementsByAuthorName(String name) {
 		return rd.readAllReimbursementsByOwnerName(name);
 	}
@@ -35,6 +35,10 @@ public class ERSReimbursementService {
 
 	public static void update(long modify, String username, ERSReimbursementStatus status) {
 		rd.updateStatus(modify, username, status);
+	}
+
+	public static ERSReimbursement getReimbursementByID(Long ID) {
+		return rd.readReimbursementByID(ID);
 	}
 
 }

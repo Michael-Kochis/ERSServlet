@@ -66,7 +66,7 @@ public class ReimbForms {
 		return sb.toString();
 	}
 
-	public static Object allPendingReimbs() {
+	public static String allPendingReimbs() {
 		StringBuilder sb = new StringBuilder();
 		
 		TreeSet<ERSReimbursement> set = ERSReimbursementService.getReimbursementsByStatus(ERSReimbursementStatus.PENDING);
